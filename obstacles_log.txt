@@ -1,0 +1,2 @@
+1 - vscode didn´t import selenium library: I had to install it using 'pip install selenium' on vscode´s terminal, on this directory. After that vscode imported selenium without any problem.
+2 - Create virtual environment (venv) for this project.
