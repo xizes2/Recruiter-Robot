@@ -1,1 +1,0 @@
-start - 20/02/2021 - Iniciate files and understand why and how virtual environments work.
