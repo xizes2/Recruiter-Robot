@@ -2,3 +2,4 @@
 2 - Understand why and how to create virtual environment (venv) for this project.
 3 - Had an issue with the terminal powershell about the execution policy: had to execute the commmand 'Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope LocalMachine' to change the execution policy and allow my user to execute all the scripts that were blocked on the standard ExecutionPolicy rule.
 4 - The webdriver wasn´t running: Had to insert the Path to the directory where the webdriver.exe file was on Windows´ environment variables Path. The directory is this one: D:\Fernando\PROGRAMAÇÃO\GitHub\Recruiter-Robot\recruiter-robot-venv\Lib\site-packages\selenium\webdriver\common. Still didn´t work. Than I changed the name of the file from mswebdriver.exe to MicrosoftWebDriver.exe and it worked.
+5 - I couldn´t use the browser object to write on the search bar after having clicked on it: I used the 'keyboard' module (keyboard.write()) in order to simulate typing the words I wanted.
