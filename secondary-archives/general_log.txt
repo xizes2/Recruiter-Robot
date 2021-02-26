@@ -2,3 +2,5 @@ start - 20/02/2021 - Iniciate files and understand why and how virtual environme
 21/02/2021 - Configure and fix various things related to the IDE, virtual environment and webdriver file.
 21/02/2021 session 2 - Define function to open webpage and write the login string in login box.
 23/02/2021 - Advance on the functions to finish login and use the search bar.
+25/02/2021 - Different tests to reach the search bar.
+26/02/2021 - More tests... 
