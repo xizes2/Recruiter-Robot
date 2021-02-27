@@ -3,4 +3,5 @@ start - 20/02/2021 - Iniciate files and understand why and how virtual environme
 21/02/2021 session 2 - Define function to open webpage and write the login string in login box.
 23/02/2021 - Advance on the functions to finish login and use the search bar.
 25/02/2021 - Different tests to reach the search bar.
-26/02/2021 - More tests... 
+26/02/2021 - More tests...
+27/02/2021 - Finished the selection process of the job name and location. 
