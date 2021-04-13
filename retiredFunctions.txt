@@ -1,0 +1,5 @@
+#Access LinkeIn search bar and input the name of the job we want.
+def searchBar(browser):
+    WebDriverWait(browser, 5).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, 'search-global-typeahead__input always-show-placeholder'.replace(' ', '.')))).send_keys('analista de datos' + Keys.ENTER)
+    #Click on 'Jobs' button
+    WebDriverWait(browser, 10, ignored_exceptions=[NoSuchElementException, StaleElementReferenceException]).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, 'mr2'))).click()

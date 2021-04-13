@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, WebDriverException, MoveTargetOutOfBoundsException, NoSuchWindowException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException, MoveTargetOutOfBoundsException, NoSuchWindowException, StaleElementReferenceException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
@@ -22,7 +22,7 @@ def openWebPage(webpage='https://www.linkedin.com/'):
         #openwebpage()
 
 #Logging in.
-def login(browser, email='mail@hotmail.com', pword='pass'):
+def login(browser, email='', pword=''):
     try:        
         #Find login button, click it.
         login_button = browser.find_element_by_class_name('nav__button-secondary')
@@ -40,12 +40,14 @@ def login(browser, email='mail@hotmail.com', pword='pass'):
         print('Something wrong here, man. Trying again...')
         #login(browser)
 
-#Access LinkeIn search bar and input the name of the job we want.
-def searchBar(browser):
-    WebDriverWait(browser, 5).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, 'search-global-typeahead__input always-show-placeholder'.replace(' ', '.')))).send_keys('analista de datos' + Keys.ENTER)
-    #Click on 'Jobs' button
-    WebDriverWait(browser, 5).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, 'mr2'))).click()
+#Locate and press 'jobs' button on the header.
+def jobsButton(browser):
+    WebDriverWait(browser, 15).until(expected_conditions.presence_of_element_located((By.ID, 'ember25'))).click()
 
+#Locate and insert keywords on the job title search box.
+def jobsBar(browser):
+    #WebDriverWait(browser, 10).until(expected_conditions.presence_of_element_located((By.ID, 'jobs-search-box-keyword-id-ember1073'))).send_keys('data analyst')
+    browser.find_element_by_xpath('//*[@id="jobs-search-box-keyword-id-ember361"]').send_keys('data analyst')
 
 def locationBar(browser, location='Barcelona'):
     #Access location bar
@@ -59,13 +61,29 @@ def locationBar(browser, location='Barcelona'):
     #Press Enter
     keyboard.press_and_release('return')
 
+def solicitudSencillaButton(browser):
+    #Access arrow button and press it to make 'solicitud sencilla' button visible
+    WebDriverWait(browser, 15, ignored_exceptions=[StaleElementReferenceException]).until(expected_conditions.presence_of_element_located((By.ID,'ember867'))).click()
+    '''#Double click the bar to select the default word
+    webdriver.ActionChains(browser).double_click(browser.find_element_by_class_name ('jobs-search-box__input.jobs-search-box__input--location')).perform()
+    #Erase it
+    keyboard.press_and_release('backspace')
+    #Write the location I want
+    keyboard.write('Barcelona')
+    #Press Enter
+    keyboard.press_and_release('return')'''
+
 browser = openWebPage()
 sleep(3)
 login(browser)
 sleep(3)
-searchBar(browser)
+jobsButton(browser)
+sleep(3)
+jobsBar(browser)
 sleep(3)
 locationBar(browser)
+sleep(3)
+solicitudSencillaButton(browser)
 
 
 
